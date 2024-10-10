@@ -3,19 +3,19 @@ pipeline {
     stages {
         stage('clone repo & clean') {
             steps {
-                bat 'if exist "Maven-Build-Pipeline" rmdir /S /Q "Maven-Build-Pipeline"'  // Check if directory exists before deleting
-                bat "git clone https://github.com/DishaHolmukhe/Maven-Build-Pipeline.git"
-                bat "mvn clean -f Maven-Build-Pipeline"
+                bat 'if exist "mavenPipeline" rmdir /S /Q "mavenPipeline"'  // Check if directory exists before deleting
+                bat "git clone https://github.com/ikamalagrahari/mavenPipeline.git"
+                bat "mvn clean -f mavenPipeline"
             }
         }
         stage('Test') {
             steps {
-                bat "mvn test -f Maven-Build-Pipeline"
+                bat "mvn test -f mavenPipeline"
             }
         }
         stage('Deploy') {
             steps {
-                bat "mvn package -f Maven-Build-Pipeline"
+                bat "mvn package -f mavenPipeline"
             }
         }
     }
